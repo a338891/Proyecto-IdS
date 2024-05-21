@@ -1,0 +1,223 @@
+drop table Administradores;
+drop table Productos;
+drop table Pantalones;
+drop table Accesorios;
+drop table Calzado;
+drop table Apartados;
+drop table Venta;
+drop table Usuarios;
+drop table Chat;
+drop table Mensajes;
+
+CREATE TABLE Administradores
+(
+	administrador_id     INTEGER  NOT NULL ,
+	nombreUsuario        VARCHAR2(20)  NOT NULL ,
+	contraseña           VARCHAR2(20)  NOT NULL ,
+	apellido             VARCHAR2(20)  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKAdministradores ON Administradores
+(administrador_id   ASC);
+
+ALTER TABLE Administradores
+	ADD CONSTRAINT  XPKAdministradores PRIMARY KEY (administrador_id);
+
+CREATE TABLE Productos
+(
+	producto_id          INTEGER  NOT NULL ,
+	proveedor_id         INTEGER  NOT NULL ,
+	medida               VARCHAR2(20)  NOT NULL ,
+	cantidadDisponible   INTEGER  NOT NULL ,
+	modelo               VARCHAR2(20)  NOT NULL ,
+	marca                VARCHAR2(20) NOT NULL ,
+	color                VARCHAR2(20)  NOT NULL ,
+	precio               FLOAT NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKProductos ON Productos
+(producto_id   ASC);
+
+ALTER TABLE Productos
+	ADD CONSTRAINT  XPKProductos PRIMARY KEY (producto_id);
+
+CREATE TABLE Pantalones
+(
+	producto_id          INTEGER  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKPantalones ON Pantalones
+(producto_id   ASC);
+
+ALTER TABLE Pantalones
+	ADD CONSTRAINT  XPKPantalones PRIMARY KEY (producto_id);
+
+CREATE TABLE Accesorios
+(
+	producto_id          INTEGER  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKAccesorios ON Accesorios
+(producto_id   ASC);
+
+ALTER TABLE Accesorios
+	ADD CONSTRAINT  XPKAccesorios PRIMARY KEY (producto_id);
+
+CREATE TABLE Calzado
+(
+	producto_id          INTEGER  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKCalzado ON Calzado
+(producto_id   ASC);
+
+ALTER TABLE Calzado
+	ADD CONSTRAINT  XPKCalzado PRIMARY KEY (producto_id);
+
+CREATE TABLE Apartados
+(
+	apartado_id          INTEGER  NOT NULL ,
+	producto_id          INTEGER  NOT NULL ,
+	cliente_id           INTEGER  NOT NULL ,
+	cantidadApartada     INTEGER  NOT NULL ,
+	fechaApartado        NCLOB  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKApartados ON Apartados
+(apartado_id   ASC);
+
+ALTER TABLE Apartados
+	ADD CONSTRAINT  XPKApartados PRIMARY KEY (apartado_id);
+
+CREATE TABLE Usuarios
+(
+	usuario_id           INTEGER  NOT NULL ,
+	cliente_id           INTEGER  NULL ,
+	administrador_id     INTEGER  NULL 
+);
+
+CREATE UNIQUE INDEX XPKUsuarios ON Usuarios
+(usuario_id   ASC);
+
+ALTER TABLE Usuarios
+	ADD CONSTRAINT  XPKUsuarios PRIMARY KEY (usuario_id);
+
+CREATE TABLE Chat
+(
+	usuario_id           INTEGER  NOT NULL ,
+	chat_id              INTEGER  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKChat ON Chat
+(chat_id   ASC);
+
+ALTER TABLE Chat
+	ADD CONSTRAINT  XPKChat PRIMARY KEY (chat_id);
+
+CREATE TABLE Mensajes
+(
+	chat_id              INTEGER  NOT NULL ,
+	texto                VARCHAR2(300)  NULL 
+);
+
+CREATE UNIQUE INDEX XPKMensajes ON Mensajes
+(chat_id   ASC);
+
+ALTER TABLE Mensajes
+	ADD CONSTRAINT  XPKMensajes PRIMARY KEY (chat_id);
+
+CREATE TABLE Clientes
+(
+	cliente_id           INTEGER  NOT NULL ,
+	nombreUsuario        VARCHAR2(20)  NOT NULL ,
+	contraseña           VARCHAR2(20)  NOT NULL ,
+	apellido             VARCHAR2(20)  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKClientes ON Clientes
+(cliente_id   ASC);
+
+ALTER TABLE Clientes
+	ADD CONSTRAINT  XPKClientes PRIMARY KEY (cliente_id);
+
+CREATE TABLE Venta
+(
+	cliente_id           INTEGER  NOT NULL ,
+	apartado_id          INTEGER  NULL ,
+	venta_id             INTEGER  NOT NULL ,
+	costoTotal           FLOAT  NOT NULL ,
+	fechaVenta           NCLOB  NULL ,
+	producto_id          INTEGER  NULL ,
+	CantidadProducto     INTEGER  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKVenta ON Venta
+(venta_id   ASC);
+
+ALTER TABLE Venta
+	ADD CONSTRAINT  XPKVenta PRIMARY KEY (venta_id);
+
+CREATE TABLE Proveedores
+(
+	proveedor_id         INTEGER  NOT NULL ,
+	nombre               VARCHAR2(20)  NULL ,
+	ciudad               CHAR(18)  NULL 
+);
+
+CREATE UNIQUE INDEX XPKProveedores ON Proveedores
+(proveedor_id   ASC);
+
+ALTER TABLE Proveedores
+	ADD CONSTRAINT  XPKProveedores PRIMARY KEY (proveedor_id);
+
+ALTER TABLE Productos
+	ADD (
+CONSTRAINT R_20 FOREIGN KEY (proveedor_id) REFERENCES Proveedores (proveedor_id) ON DELETE SET NULL);
+
+ALTER TABLE Pantalones
+	ADD (
+CONSTRAINT R_7 FOREIGN KEY (producto_id) REFERENCES Productos (producto_id) ON DELETE CASCADE);
+
+ALTER TABLE Accesorios
+	ADD (
+CONSTRAINT R_9 FOREIGN KEY (producto_id) REFERENCES Productos (producto_id) ON DELETE CASCADE);
+
+ALTER TABLE Calzado
+	ADD (
+CONSTRAINT R_8 FOREIGN KEY (producto_id) REFERENCES Productos (producto_id) ON DELETE CASCADE);
+
+ALTER TABLE Apartados
+	ADD (
+CONSTRAINT R_4 FOREIGN KEY (cliente_id) REFERENCES Clientes (cliente_id) ON DELETE SET NULL);
+
+ALTER TABLE Apartados
+	ADD (
+CONSTRAINT R_3 FOREIGN KEY (producto_id) REFERENCES Productos (producto_id) ON DELETE SET NULL);
+
+ALTER TABLE Usuarios
+	ADD (
+CONSTRAINT R_6 FOREIGN KEY (cliente_id) REFERENCES Clientes (cliente_id) ON DELETE SET NULL);
+
+ALTER TABLE Usuarios
+	ADD (
+CONSTRAINT R_5 FOREIGN KEY (administrador_id) REFERENCES Administradores (administrador_id) ON DELETE SET NULL);
+
+ALTER TABLE Chat
+	ADD (
+CONSTRAINT R_10 FOREIGN KEY (usuario_id) REFERENCES Usuarios (usuario_id) ON DELETE SET NULL);
+
+ALTER TABLE Mensajes
+	ADD (
+CONSTRAINT R_13 FOREIGN KEY (chat_id) REFERENCES Chat (chat_id));
+
+ALTER TABLE Venta
+	ADD (
+CONSTRAINT R_15 FOREIGN KEY (cliente_id) REFERENCES Clientes (cliente_id) ON DELETE SET NULL);
+
+ALTER TABLE Venta
+	ADD (
+CONSTRAINT R_17 FOREIGN KEY (apartado_id) REFERENCES Apartados (apartado_id) ON DELETE SET NULL);
+
+ALTER TABLE Venta
+	ADD (
+CONSTRAINT R_25 FOREIGN KEY (producto_id) REFERENCES Productos (producto_id) ON DELETE SET NULL);
