@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda de Jeans</title>
+  <link rel="stylesheet" href="css/hpcliente.css">
+  <style>
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bustamante Jeans</h1>
+  </header>
+  <a href="info.html" class="info-btn">Acerca de nosotros</a>
+  <section class="jeans-container">
+    <h2 class="title-jeans white-text">Selección de Jeans</h2>
+  </section>
+
+  <div class="jeans-list">
+    <div class="jeans-item">
+      <img src="img/jeans1.jpg" alt="Jeans 1">
+      <div class="size-buttons">
+        <button onclick="decrementInventoryCount('inventoryCountAzul')">-</button>
+        <span id="inventoryCountAzul">50</span>
+        <button onclick="incrementInventoryCount('inventoryCountAzul')">+</button>
+      </div>
+      <h3>Jean Azul</h3>
+      <p>Precio: $50</p>
+      <button onclick="viewReserved('Jean Azul')">Ver Artículos Apartados</button>
+    </div>
+    <div class="jeans-item">
+      <img src="img/jeans2.jpg" alt="Jeans 2">
+      <div class="size-buttons">
+        <button onclick="decrementInventoryCount('inventoryCountNegro')">-</button>
+        <span id="inventoryCountNegro">50</span>
+        <button onclick="incrementInventoryCount('inventoryCountNegro')">+</button>
+      </div>
+      <h3>Jean Negro</h3>
+      <p>Precio: $45</p>
+      <button onclick="viewReserved('Jean Negro')">Ver Artículos Apartados</button>
+    </div>
+    <!-- Agregar más productos si es necesario -->
+  </div>
+
+  <aside class="cart" id="cart" style="display: none;">
+    <div class="cart-header">
+      <h2>Carrito</h2>
+      <button class="close-btn close-btn-alt" onclick="closeCart()">X</button>
+    </div>
+    <section class="reserved-items" id="reservedItems">
+      <!-- Sección para mostrar artículos apartados -->
+    </section>
+  </aside>
+
+  <script src="inventario.js"></script>
+</body>
+</html>
