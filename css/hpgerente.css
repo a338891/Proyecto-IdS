@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('bgjeans3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333333c7;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
+
+.jeans-container {
+  color: rgba(255, 255, 255, 0.753);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.title-jeans {
+  text-align: center;
+}
+
+.jeans-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.jeans-item {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ffffff;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.jeans-item img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.jeans-price {
+  margin-top: 5px;
+  margin-bottom: 5px;
+} 
+
+button {
+  background-color: #4682B4;
+  color: white;
+  padding: 9px 16px;
+  font-size: 13px;
+  border-radius: 3px;
+  margin-top: 3px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #005CB2;
+  transform: scale(1.15);
+}
+
+button:focus {
+  outline: none;
+}
+
+.cart {
+  background-color: #f9f9f9e1;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.cart h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #555;
+  transform: scale(1.15);
+}
+
+.close-btn-alt {
+  background-color: rgba(0, 0, 255, 0);
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
+.close-btn-alt:hover {
+  background-color: rgba(255, 0, 0, 0);
+  transform: scale(1.15);
+}
+
+a.info-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  color: white;
+  padding: 9px 16px;
+  font-size: 13px;
+  border-radius: 3px;
+  border: 1px solid white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.info-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.15);
+}

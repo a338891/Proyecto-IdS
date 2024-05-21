@@ -1,0 +1,61 @@
+/* Estilos para la barra negra */
+.black-bar {
+    background-color: #333333e0; /* Gris más oscuro */
+    height: 100px; /* Altura más grande */
+    width: 100%; /* Ocupa todo el ancho */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffffc0; /* Color de texto blanco */
+    font-size: 30px; /* Tamaño grande del texto */
+    font-weight: bold;
+    text-transform: none; /* Sin transformación de texto */
+  }
+  
+  /* Estilos para el resto del contenido */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('bgjeans2.jpg'); /* Reemplaza 'css/bgjeans2.jpg' con la ruta correcta de tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 80px auto 0; /* Margen superior agregado */
+    background-color: rgba(224, 199, 176, 0.767); /* Fondo blanco semi-transparente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333030;
+  }
+  
+  .highlight {
+    font-weight: bold;
+    color: #000; /* Cambio de color a negro */
+  }
+  
+  .emphasis {
+    font-style: italic;
+  }
+  
+  .quote {
+    border-left: 3px solid #007bff;
+    padding-left: 10px;
+    margin-left: 10px;
+    color: #252525;
+  }
+  
