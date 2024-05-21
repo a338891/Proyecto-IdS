@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda de Jeans</title>
+  <link rel="stylesheet" href="css/hpcliente.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    .white-text {
+      color: white; /* Cambiar el color del texto a blanco */
+    }
+  </style>
+</head>
+<body>
+  <header closeCart()>
+    <h1>Bustamante Jeans</h1>
+  </header>
+  <a href="info.html" class="info-btn">Acerca de nosotros</a>
+  <section class="jeans-container">
+    <h2 class="title-jeans white-text">Selección de Jeans</h2> <!-- Añadir la clase white-text -->
+  </section>
+
+  <div class="jeans-list">
+    <div class="jeans-item">
+      <img src="img/jeans1.jpg" alt="Jeans 1">
+      <div class="size-buttons">
+        <button onclick="addToCart('Jean Azul', 50, 'S')">S</button>
+        <button onclick="addToCart('Jean Azul', 50, 'M')">M</button>
+        <button onclick="addToCart('Jean Azul', 50, 'L')">L</button>
+        <button onclick="addToCart('Jean Azul', 50, 'XL')">XL</button>
+      </div>
+      <h3>Jean Azul</h3>
+      <p>Precio: $50</p>
+      <button onclick="showOrHideCart()" >Agregar al Carrito</button>
+    </div>
+    <div class="jeans-item">
+      <img src="img/jeans2.jpg" alt="Jeans 2">
+      <div class="size-buttons">
+        <button onclick="addToCart('Jean Azul', 50, 'S')">S</button>
+        <button onclick="addToCart('Jean Azul', 50, 'M')">M</button>
+        <button onclick="addToCart('Jean Azul', 50, 'L')">L</button>
+        <button onclick="addToCart('Jean Azul', 50, 'XL')">XL</button>
+      </div>
+      <h3>Jean Negro</h3>
+      <p>Precio: $45</p>
+      <button onclick="showOrHideCart()">Agregar al Carrito</button>
+    </div>
+    <!-- Agregar más productos si es necesario -->
+  </div>
+
+  <aside class="cart" id="cart">
+    <div class="cart-header">
+      <h2>Carrito</h2>
+      <button class="close-btn close-btn-alt" onclick="closeCart()">X</button>
+    </div>
+    <ul id="cart-items">
+      <!-- Elementos del carrito se añadirán dinámicamente aquí -->
+    </ul>
+  </aside>
+  <a href="chat.html" class="chat-btn">Chat</a>
+
+  
+  <script src="carrito.js"></script>
+</body>
+</html>
